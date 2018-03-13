@@ -32,7 +32,13 @@
                             <outlet property="delegate" destination="wbO-0r-PLg" id="SJo-cH-y8S"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="MvK-h8-SHe"/>
+                    <navigationItem key="navigationItem" id="MvK-h8-SHe">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3zD-Sx-bLY">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="wbO-0r-PLg" id="l4F-wo-azE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="vdc-0d-OAW" kind="show" identifier="goToNotes" id="Y2I-tk-cjK"/>
                     </connections>
