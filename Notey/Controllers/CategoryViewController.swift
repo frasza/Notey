@@ -80,15 +80,21 @@ class CategoryViewController: UITableViewController {
     }
     
     // Load from Core Data
-    func loadCategories(with request: NSFetchRequest<Category> = Category.fetchRequest()) {
+    func loadCategories(with request: NSFetchRequest<Category> = Category.fetchRequest(), predicate: NSPredicate? = nil) {
         
         let request: NSFetchRequest<Category> = Category.fetchRequest()
+        
+        if let predicate = predicate {
+            request.predicate = predicate
+        }
         
         do {
             categories = try context.fetch(request)
         } catch {
             print("Error loading data, \(error)")
         }
+        
+        tableView.reloadData()
         
     }
     
@@ -126,8 +132,37 @@ class CategoryViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
         
     }
-    
 
-    
 }
 
+//MARK: - SearchBar Methods
+/***************************************************************/
+
+extension CategoryViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        let request: NSFetchRequest<Category> = Category.fetchRequest()
+        let predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchBar.text!)
+        
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        loadCategories(with: request, predicate: predicate)
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchBar.text?.count == 0 {
+            
+            loadCategories()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+            
+        }
+        
+    }
+    
+}
