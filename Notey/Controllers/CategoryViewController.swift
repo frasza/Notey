@@ -48,6 +48,9 @@ class CategoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        // Go to notes with selected category
+        performSegue(withIdentifier: "goToNotes", sender: self)
+        
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
@@ -131,6 +134,18 @@ class CategoryViewController: UITableViewController {
         
         present(alert, animated: true, completion: nil)
         
+    }
+    
+    //MARK: - Segue Preparation
+    /***************************************************************/
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToNotes" {
+            let destinationVC = segue.destination as! NotesViewController
+            if let indexPath = tableView.indexPathForSelectedRow {
+                destinationVC.selectedCategory = categories[indexPath.row]
+            }
+        }
     }
 
 }

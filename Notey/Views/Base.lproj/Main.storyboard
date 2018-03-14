@@ -6,10 +6,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Category View Controller-->
+        <!--Notey-->
         <scene sceneID="rD4-bP-vn8">
             <objects>
                 <tableViewController id="wbO-0r-PLg" customClass="CategoryViewController" customModule="Notey" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,7 +41,7 @@
                             <outlet property="delegate" destination="wbO-0r-PLg" id="SJo-cH-y8S"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="MvK-h8-SHe">
+                    <navigationItem key="navigationItem" title="Notey" id="MvK-h8-SHe">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3zD-Sx-bLY">
                             <connections>
                                 <action selector="addButtonPressed:" destination="wbO-0r-PLg" id="l4F-wo-azE"/>
@@ -55,7 +56,7 @@
             </objects>
             <point key="canvasLocation" x="348" y="133.5832083958021"/>
         </scene>
-        <!--Notes View Controller-->
+        <!--Notey-->
         <scene sceneID="vuj-5F-ev9">
             <objects>
                 <tableViewController id="vdc-0d-OAW" customClass="NotesViewController" customModule="Notey" customModuleProvider="target" sceneMemberID="viewController">
@@ -72,28 +73,39 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" rowHeight="100" id="Nbf-P2-wVP" customClass="NoteViewCell" customModule="Notey" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoteCell" rowHeight="103" id="Nbf-P2-wVP" customClass="NoteViewCell" customModule="Notey" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nbf-P2-wVP" id="hcX-66-aZw">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="102.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szk-fv-ioh">
-                                            <rect key="frame" x="16" y="11" width="343" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szk-fv-ioh">
+                                            <rect key="frame" x="16" y="11" width="343" height="14"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdM-fy-v5u">
-                                            <rect key="frame" x="16" y="39" width="343" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdM-fy-v5u">
+                                            <rect key="frame" x="16" y="32" width="343" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="mz0-Hx-EDX"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="szk-fv-ioh" firstAttribute="leading" secondItem="hcX-66-aZw" secondAttribute="leadingMargin" id="4C0-v6-5q9"/>
+                                        <constraint firstItem="EdM-fy-v5u" firstAttribute="top" secondItem="szk-fv-ioh" secondAttribute="bottom" constant="7" id="7qF-fo-ENH"/>
+                                        <constraint firstItem="EdM-fy-v5u" firstAttribute="trailing" secondItem="hcX-66-aZw" secondAttribute="trailingMargin" id="9r4-V9-ri2"/>
+                                        <constraint firstItem="EdM-fy-v5u" firstAttribute="top" secondItem="szk-fv-ioh" secondAttribute="bottom" constant="7" id="KHZ-EJ-Kvn"/>
+                                        <constraint firstItem="szk-fv-ioh" firstAttribute="trailing" secondItem="hcX-66-aZw" secondAttribute="trailingMargin" id="Kdo-Wg-3y1"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="EdM-fy-v5u" secondAttribute="bottom" constant="40" id="XMg-tI-wVf"/>
+                                        <constraint firstItem="EdM-fy-v5u" firstAttribute="leading" secondItem="hcX-66-aZw" secondAttribute="leadingMargin" id="aOS-yh-FC0"/>
+                                        <constraint firstItem="szk-fv-ioh" firstAttribute="top" secondItem="hcX-66-aZw" secondAttribute="topMargin" id="j8Y-xf-I92"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="notesLabel" destination="EdM-fy-v5u" id="2Ge-nE-Phh"/>
@@ -106,6 +118,13 @@
                             <outlet property="delegate" destination="vdc-0d-OAW" id="VPS-1H-oUi"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Notey" id="Cln-aE-FAO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="AI2-Bo-cgm">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="vdc-0d-OAW" id="sOG-kF-qSX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rY6-b7-3Ev" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
